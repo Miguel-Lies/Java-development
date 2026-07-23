@@ -37,17 +37,6 @@ public class UserAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByID(UUID id) {
-
-        return repository.findById(id)
-                .map(entity -> new User(
-                        entity.getId(),
-                        entity.getEmail(),
-                        entity.getName()
-                ));
-    }
-
-    @Override
     public User delete(User user) {
 
         UserEntity entity = new UserEntity(
@@ -60,5 +49,16 @@ public class UserAdapter implements UserRepository {
         repository.delete(entity);
 
         return user;
+    }
+
+    @Override
+    public Optional<User> findByID(UUID id) {
+
+        return repository.findById(id)
+                .map(entity -> new User(
+                        entity.getId(),
+                        entity.getEmail(),
+                        entity.getName()
+                ));
     }
 }

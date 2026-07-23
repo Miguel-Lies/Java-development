@@ -11,6 +11,7 @@ public class Order {
     
     private UUID id;
     private UUID costumerId;
+    private UUID orderID;
     private List<Item> items;
     private OrderStatus status;
     private BigDecimal totalAmount;
@@ -23,6 +24,10 @@ public class Order {
         this.status = status;
         this.totalAmount = totalAmount;
         this.createdAt = createdAt;
+    }
+
+    public Order(OrderStatus status) {
+        this.status = status;
     }
 
     public Order() {
@@ -73,6 +78,18 @@ public class Order {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+
+
+    public UUID getOrderID() {
+        return orderID;
+    }
+
+
+
+    public void setOrderID(UUID orderID) {
+        this.orderID = orderID;
     }
 
     
