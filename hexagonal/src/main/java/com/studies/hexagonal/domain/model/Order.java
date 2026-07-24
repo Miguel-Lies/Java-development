@@ -18,7 +18,7 @@ public class Order {
     private Date createdAt;
 
 
-    public Order(UUID costumerId, List<Item> items, OrderStatus status, BigDecimal totalAmount, Date createdAt) {
+    public Order(UUID id, UUID costumerId, List<Item> items, OrderStatus status, BigDecimal totalAmount, Date createdAt) {
         this.costumerId = costumerId;
         this.items = items;
         this.status = status;
@@ -28,6 +28,14 @@ public class Order {
 
     public Order(OrderStatus status) {
         this.status = status;
+    }
+
+    public Order(UUID orderID, List<Item> items, OrderStatus status, BigDecimal totalAmount, Date createdAt) {
+        this.orderID = orderID;
+        this.items = items;
+        this.status = status;
+        this.totalAmount = totalAmount;
+        this.createdAt = createdAt;
     }
 
     public Order() {

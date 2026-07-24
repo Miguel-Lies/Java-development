@@ -1,5 +1,8 @@
 package com.studies.hexagonal.adapters.output.persistence.linking;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.stereotype.Component;
 
 import com.studies.hexagonal.adapters.output.persistence.entity.OrderEntity;
@@ -44,6 +47,16 @@ public class OrderAdapter implements OrderRepository {
         repository.delete(entity);
 
         return new Order(OrderStatus.CANCELED);
+    }
+
+    @Override
+    public Optional<Order> findById(UUID id){
+       return repository.findById(id)
+       .map(entity -> new Order(entity.getOrderId(),
+       entity.getItems(),
+       entity.getStatus(),
+       entity.getTotalAmount(),
+       entity.getCreatedAt()));
     }
 
 }
