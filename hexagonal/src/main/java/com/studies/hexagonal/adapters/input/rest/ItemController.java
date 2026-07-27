@@ -3,10 +3,12 @@ package com.studies.hexagonal.adapters.input.rest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
+import com.studies.hexagonal.application.dto.request.ItemRequest;
+import com.studies.hexagonal.application.dto.response.ItemResponse;
+import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.application.dto.request.UserRequest;
-import com.studies.hexagonal.application.dto.response.UserResponse;
-import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
+import com.studies.hexagonal.domain.model.Item;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,22 +24,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "/user")
-public class UserController {
-
-    private final CreateUserUseCase create;
+@RequestMapping("/item")
+public class ItemController {
+    
+    private final AddItemUseCase add;
 
     private final DeleteUserUseCase delete;
 
     @PostMapping("/create")
-    public ResponseEntity<UserResponse> create(@RequestBody UserRequest request) {
-        UserResponse response = create.execute(request);
+    public ResponseEntity<ItemResponse> create(@RequestBody ItemRequest request) {
+        Item item = add.execute(request);
+        ItemResponse response = ItemMapper.toResponse(item);
         
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+    @DeleteMapping("/delete")
+    public ResponseEntity<ItemResponse> delete(@PathVariable UUID id){
         delete.execute(id);
 
         return ResponseEntity.noContent().build();

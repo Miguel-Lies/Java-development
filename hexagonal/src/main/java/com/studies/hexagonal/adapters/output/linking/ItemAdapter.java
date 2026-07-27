@@ -20,7 +20,7 @@ public class ItemAdapter implements ItemRepository {
     }
 
     @Override
-    public Item save(Item item){
+    public Item add(Item item){
         ItemEntity entity = new ItemEntity(item.getId(),
         item.getName(),
         item.getQuantity(),
