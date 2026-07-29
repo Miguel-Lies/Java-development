@@ -9,6 +9,7 @@ import com.studies.hexagonal.application.port.input.usecases.order.CancelOrderUs
 import com.studies.hexagonal.application.port.input.usecases.order.CreateOrderUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
+import com.studies.hexagonal.application.port.output.persistence.interfaces.PasswordEncoderPort;
 import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
@@ -17,8 +18,8 @@ import com.studies.hexagonal.application.port.output.persistence.repository.User
 public class UseCaseConfig {
     
     @Bean
-    public CreateUserUseCase createUserUseCase(UserRepository repository){
-        return new CreateUserUseCase(repository);
+    public CreateUserUseCase createUserUseCase(UserRepository repository, PasswordEncoderPort encode){
+        return new CreateUserUseCase(repository, encode);
     }
 
     @Bean

@@ -15,7 +15,7 @@ public class ProcessPayment {
 
         return amount;
     }
-    return amount;
-}
+        return amount;
+    }
     
 }
