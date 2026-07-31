@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.studies.hexagonal.domain.model.User;
 
 public interface UserRepository {
-    Optional<User> findByID(UUID id);
+    Optional<User> findById(UUID id);
 
     User save(User user);
     User delete(User user);

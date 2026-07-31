@@ -10,11 +10,11 @@ public class CreateUserUseCase {
 
     private final UserRepository repository;
 
-    private PasswordEncoderPort encode;
+    private PasswordEncoderPort encoder;
 
-    public CreateUserUseCase(UserRepository repository, PasswordEncoderPort encode){
+    public CreateUserUseCase(UserRepository repository, PasswordEncoderPort encoder){
         this.repository = repository;
-        this.encode = encode;
+        this.encoder = encoder;
     }
 
     public UserResponse execute(UserRequest request) {
@@ -22,10 +22,12 @@ public class CreateUserUseCase {
 
         create.setName(request.getName());
         create.setEmail(request.getEmail());
-        create.setPassword(encode.encode(request.getPassword()));
+        create.setPassword(encoder.encode(request.getPassword()));
 
         User saved = repository.save(create);
 
-        return new UserResponse(saved.getId(), saved.getName(), saved.getEmail());
+        return new UserResponse(saved.getId(),
+        saved.getName(),
+        saved.getEmail());
     }
 }

@@ -1,46 +1,33 @@
 package com.studies.hexagonal.application.port.input.usecases.payment;
 
-public class CreditCardPayment implements PaymentMethod {
+public class CreditCardPayment implements PaymentInterface {
 
-    private final String cardNumber;
-    private final String cardHolderName;
-    private final String cvv;
+    private final String cardToken;
+    private final String lastFourDigits;
     private final int installments;
 
-    public CreditCardPayment(String cardNumber, String cardHolderName, String cvv, int installments) {
-        this.cardNumber = cardNumber;
-        this.cardHolderName = cardHolderName;
-        this.cvv = cvv;
+    public CreditCardPayment(String cardToken, String lastFourDigits, int installments) {
+        this.cardToken = cardToken;
+        this.lastFourDigits = lastFourDigits;
         this.installments = installments;
     }
 
     @Override
     public boolean isValid() {
-        return cardNumber != null && cardNumber.replaceAll("\\s", "").length() == 16
-                && cvv != null && cvv.length() >= 3
+        return cardToken != null && !cardToken.isBlank()
                 && installments >= 1 && installments <= 12;
     }
 
     @Override
     public String describe() {
-        String lastFour = cardNumber.substring(cardNumber.length() - 4);
-        return "Card credit final %s at %dx".formatted(lastFour, installments);
+        return "Card credit final %s at %dx".formatted(lastFourDigits, installments);
+    }
+
+    public String getCardToken() {
+        return cardToken;
     }
 
     public int getInstallments() {
         return installments;
     }
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public String getCardHolderName() {
-        return cardHolderName;
-    }
-
-    String getCvv() {
-        return cvv;
-    }
- 
 }

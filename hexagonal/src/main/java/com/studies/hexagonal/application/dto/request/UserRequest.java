@@ -1,7 +1,10 @@
 package com.studies.hexagonal.application.dto.request;
 
+import java.util.UUID;
+
 public class UserRequest {
     
+    private UUID id;
     private String name;
     private String email;
     private String password;
@@ -10,6 +13,10 @@ public class UserRequest {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public UserRequest(UUID id) {
+        this.id = id;
     }
 
     public UserRequest() {
@@ -37,6 +44,14 @@ public class UserRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     

@@ -2,6 +2,8 @@ package com.studies.hexagonal.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
 import com.studies.hexagonal.application.port.input.usecases.item.DeleteItemUseCase;
@@ -45,5 +47,10 @@ public class UseCaseConfig {
     @Bean
     public CancelOrderUseCase cancelOrderUseCase(OrderRepository repository){
         return new CancelOrderUseCase(repository);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

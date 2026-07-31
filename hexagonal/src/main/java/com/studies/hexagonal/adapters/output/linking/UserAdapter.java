@@ -21,20 +21,20 @@ public class UserAdapter implements UserRepository {
 
     @Override
     public User save(User user) {
-
-        UserEntity entity = new UserEntity(user.getId(),
-        user.getName(),
-        user.getEmail(),
-        user.getPassword());
+        UserEntity entity = new UserEntity(
+            user.getId(),
+            user.getName(),
+            user.getEmail(),
+            user.getPassword());
 
         UserEntity savedEntity = repository.save(entity);
 
         return new User(
-                savedEntity.getId(),
-                savedEntity.getName(),
-                savedEntity.getEmail()
-        );
-    }
+            savedEntity.getId(),
+            savedEntity.getName(),
+            savedEntity.getEmail(),
+            savedEntity.getPassword());
+}
 
     @Override
     public User delete(User user) {
@@ -52,13 +52,12 @@ public class UserAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByID(UUID id) {
-
+    public Optional<User> findById(UUID id) {
         return repository.findById(id)
-                .map(entity -> new User(
-                        entity.getId(),
-                        entity.getEmail(),
-                        entity.getName()
-                ));
-    }
+        .map(entity -> new User(
+            entity.getId(),
+            entity.getName(),
+            entity.getEmail(),
+            entity.getPassword()));
+}
 }

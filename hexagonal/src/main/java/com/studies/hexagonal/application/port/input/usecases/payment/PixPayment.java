@@ -1,6 +1,6 @@
 package com.studies.hexagonal.application.port.input.usecases.payment;
 
-public class PixPayment implements PaymentMethod{
+public class PixPayment implements PaymentInterface{
 
     private final String pixKey;
 

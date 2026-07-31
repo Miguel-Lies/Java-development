@@ -15,7 +15,7 @@ public class DeleteUserUseCase {
     }
     
     public void execute(UUID id){
-        User delete = repository.findByID(id)
+        User delete = repository.findById(id)
         .orElseThrow(() -> new NotFoundUser("Not found user"));
 
         repository.delete(delete);

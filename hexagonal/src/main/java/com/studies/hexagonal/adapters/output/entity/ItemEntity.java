@@ -15,6 +15,7 @@ import jakarta.persistence.*;
 @Table(name = "items")
 public class ItemEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
