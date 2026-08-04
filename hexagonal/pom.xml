@@ -11,7 +11,7 @@
 		<version>4.1.0</version>
 		<relativePath/>
 	</parent>
-
+	
 	<groupId>com.studies</groupId>
 	<artifactId>hexagonal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

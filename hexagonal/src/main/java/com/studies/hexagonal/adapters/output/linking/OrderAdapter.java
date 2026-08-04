@@ -8,31 +8,42 @@ import org.springframework.stereotype.Component;
 
 import com.studies.hexagonal.adapters.output.entity.ItemEntity;
 import com.studies.hexagonal.adapters.output.entity.OrderEntity;
+import com.studies.hexagonal.adapters.output.entity.UserEntity;
 import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.adapters.output.repository.OrderEntityRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.domain.model.Order;
 import com.studies.hexagonal.shared.enums.OrderStatus;
 
 @Component
 public class OrderAdapter implements OrderRepository {
-    
-    private final OrderEntityRepository repository;
 
-    public OrderAdapter(OrderEntityRepository repository){
+    private final OrderEntityRepository repository;
+    private final UserEntityRepository repositoryUser;
+    private final ItemMapper itemMapper;
+
+    public OrderAdapter(OrderEntityRepository repository, 
+                         UserEntityRepository repositoryUser,
+                         ItemMapper itemMapper) {
         this.repository = repository;
+        this.repositoryUser = repositoryUser;
+        this.itemMapper = itemMapper;
     }
 
     @Override
     public Order save(Order order) {
+        UserEntity user = repositoryUser.getReferenceById(order.getId());
+
         List<ItemEntity> itemEntities = order.getItems().stream()
-                .map(ItemMapper::toEntity)
+                .map(itemMapper::toEntity)
                 .toList();
 
         OrderEntity entity = new OrderEntity(
                 order.getId(),
                 order.getOrderID(),
+                user,
                 itemEntities,
                 order.getStatus(),
                 order.getTotalAmount(),
@@ -44,29 +55,33 @@ public class OrderAdapter implements OrderRepository {
     }
 
     @Override
-public Order delete(Order order) {
-    List<ItemEntity> itemEntities = order.getItems().stream()
-            .map(ItemMapper::toEntity)
-            .toList();
+    public Order delete(Order order) {
+        UserEntity user = repositoryUser.getReferenceById(order.getId());
 
-    OrderEntity entity = new OrderEntity(
+        List<ItemEntity> itemEntities = order.getItems().stream()
+                .map(itemMapper::toEntity)
+                .toList();
+
+        OrderEntity entity = new OrderEntity(
+                order.getId(),
+                order.getOrderID(),
+                user,
+                itemEntities,
+                order.getStatus(),
+                order.getTotalAmount(),
+                order.getCreatedAt());
+
+        repository.delete(entity);
+
+        return new Order(
             order.getId(),
-            order.getOrderID(),
-            itemEntities,
-            order.getStatus(),
-            order.getTotalAmount(),
-            order.getCreatedAt());
-
-    repository.delete(entity);
-
-    return new Order(
-            order.getId(),
+            order.getCostumerId(),
             order.getOrderID(),
             order.getItems(),
             OrderStatus.CANCELED,
             order.getTotalAmount(),
             order.getCreatedAt());
-}
+    }
 
     @Override
     public Optional<Order> findById(UUID id) {
@@ -79,12 +94,12 @@ public Order delete(Order order) {
                 .map(ItemMapper::toDomain)
                 .toList();
 
-        return new Order(
-                entity.getId(),
-                entity.getOrderId(),
-                items,
-                entity.getStatus(),
-                entity.getTotalAmount(),
-                entity.getCreatedAt());
+        return new Order(entity.getId(),
+        entity.getUser().getId(),
+        entity.getOrderId(),
+        items,
+        entity.getStatus(),
+        entity.getTotalAmount(),
+        entity.getCreatedAt());
     }
 }

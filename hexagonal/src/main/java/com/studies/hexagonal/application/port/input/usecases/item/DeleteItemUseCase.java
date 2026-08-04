@@ -2,7 +2,7 @@ package com.studies.hexagonal.application.port.input.usecases.item;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.shared.exceptions.NotFoundItem;
 

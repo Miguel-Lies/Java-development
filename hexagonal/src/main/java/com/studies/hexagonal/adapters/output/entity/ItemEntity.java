@@ -18,6 +18,10 @@ public class ItemEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private SellerEntity sellerId;
+
     @Column(nullable = false)
     private String name;
 

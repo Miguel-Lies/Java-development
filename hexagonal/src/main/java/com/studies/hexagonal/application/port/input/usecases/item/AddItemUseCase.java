@@ -1,7 +1,7 @@
 package com.studies.hexagonal.application.port.input.usecases.item;
 
 import com.studies.hexagonal.application.dto.request.ItemRequest;
-import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 
 public class AddItemUseCase {

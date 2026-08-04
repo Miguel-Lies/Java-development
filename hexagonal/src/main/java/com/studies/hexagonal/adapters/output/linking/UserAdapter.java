@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.studies.hexagonal.adapters.output.entity.UserEntity;
 import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
 import com.studies.hexagonal.domain.model.User;
 
 @Component

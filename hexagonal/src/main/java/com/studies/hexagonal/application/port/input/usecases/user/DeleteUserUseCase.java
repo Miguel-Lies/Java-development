@@ -2,7 +2,7 @@ package com.studies.hexagonal.application.port.input.usecases.user;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
 import com.studies.hexagonal.domain.model.User;
 import com.studies.hexagonal.shared.exceptions.NotFoundUser;
 

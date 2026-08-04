@@ -1,7 +1,6 @@
 package com.studies.hexagonal.adapters.output.entity;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.*;
 
 import com.studies.hexagonal.shared.enums.OrderStatus;
@@ -21,8 +20,12 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private UUID orderId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
     @ElementCollection
     @CollectionTable(name = "order_items", joinColumns = @JoinColumn(name = "order_id"))

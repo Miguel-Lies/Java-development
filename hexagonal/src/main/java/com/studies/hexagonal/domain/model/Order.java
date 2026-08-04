@@ -1,14 +1,14 @@
 package com.studies.hexagonal.domain.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import com.studies.hexagonal.shared.enums.OrderStatus;
 
 public class Order {
-    
+
     private UUID id;
     private UUID costumerId;
     private UUID orderID;
@@ -17,20 +17,10 @@ public class Order {
     private BigDecimal totalAmount;
     private Date createdAt;
 
-
-    public Order(UUID id, UUID costumerId, List<Item> items, OrderStatus status, BigDecimal totalAmount, Date createdAt) {
+    public Order(UUID id, UUID costumerId, UUID orderID, List<Item> items,
+                 OrderStatus status, BigDecimal totalAmount, Date createdAt) {
+        this.id = id;
         this.costumerId = costumerId;
-        this.items = items;
-        this.status = status;
-        this.totalAmount = totalAmount;
-        this.createdAt = createdAt;
-    }
-
-    public Order(OrderStatus status) {
-        this.status = status;
-    }
-
-    public Order(UUID orderID, List<Item> items, OrderStatus status, BigDecimal totalAmount, Date createdAt) {
         this.orderID = orderID;
         this.items = items;
         this.status = status;
@@ -39,6 +29,23 @@ public class Order {
     }
 
     public Order() {
+    }
+
+    public static Order create(UUID costumerId, List<Item> items) {
+        return new Order(
+                UUID.randomUUID(),
+                costumerId,
+                UUID.randomUUID(),
+                items,
+                OrderStatus.PENDING,
+                calculateTotal(items),
+                new Date());
+    }
+
+    private static BigDecimal calculateTotal(List<Item> items) {
+        return items.stream()
+                .map(item -> item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public UUID getId() {

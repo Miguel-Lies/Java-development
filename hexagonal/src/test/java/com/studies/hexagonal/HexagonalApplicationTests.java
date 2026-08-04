@@ -8,8 +8,8 @@ import com.studies.hexagonal.application.dto.request.UserRequest;
 import com.studies.hexagonal.application.dto.response.UserResponse;
 import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.application.port.output.persistence.interfaces.PasswordEncoderPort;
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.interfaces.PasswordEncoderPort;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
 import com.studies.hexagonal.domain.model.User;
 
 import static org.assertj.core.api.Assertions.assertThat;

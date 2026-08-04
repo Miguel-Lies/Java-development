@@ -2,7 +2,7 @@ package com.studies.hexagonal.application.port.input.usecases.order;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.domain.model.Order;
 import com.studies.hexagonal.shared.enums.OrderStatus;
 import com.studies.hexagonal.shared.exceptions.OrderNotFound;

@@ -9,11 +9,20 @@ import com.studies.hexagonal.domain.model.Order;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class OrderMapper {
 
-    public static OrderEntity toEntity(Order order) {
+    private final ItemMapper itemMapper;
+
+    public OrderMapper(ItemMapper itemMapper) {
+        this.itemMapper = itemMapper;
+    }
+
+    public OrderEntity toEntity(Order order) {
         List<ItemEntity> itemEntities = order.getItems().stream()
-                .map(ItemMapper::toEntity)
+                .map(itemMapper::toEntity)
                 .toList();
 
         return OrderEntity.builder()
@@ -31,13 +40,13 @@ public class OrderMapper {
                 .map(ItemMapper::toDomain)
                 .toList();
 
-        return new Order(
-                entity.getId(),
-                entity.getOrderId(),
-                items,
-                entity.getStatus(),
-                entity.getTotalAmount(),
-                entity.getCreatedAt());
+        return new Order(entity.getId(),
+        entity.getUser().getId(),
+        entity.getOrderId(),
+        items,
+        entity.getStatus(),
+        entity.getTotalAmount(),
+        entity.getCreatedAt());
     }
 
     public static OrderResponse toResponse(Order order) {
