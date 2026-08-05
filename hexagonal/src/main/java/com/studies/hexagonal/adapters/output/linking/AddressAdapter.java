@@ -1,5 +1,8 @@
 package com.studies.hexagonal.adapters.output.linking;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.stereotype.Component;
 
 import com.studies.hexagonal.adapters.output.entity.AddressEntity;
@@ -64,4 +67,16 @@ public class AddressAdapter implements AddressRepository {
         return address;
     }
     
+    @Override
+public Optional<Address> findById(UUID id) {
+    return repository.findById(id)
+        .map(entity -> new Address(
+            entity.getCountry(),
+            entity.getPostalCode(),
+            entity.getState(),
+            entity.getCity(),
+            entity.getNeighborhood(),
+            entity.getStreet(),
+            entity.getNumber()));
+    }
 }
