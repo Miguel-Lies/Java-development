@@ -17,24 +17,19 @@ import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.domain.model.Order;
 import com.studies.hexagonal.shared.enums.OrderStatus;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Component
 public class OrderAdapter implements OrderRepository {
 
     private final OrderEntityRepository repository;
-    private final UserEntityRepository repositoryUser;
+    private final UserEntityRepository userRepository;
     private final ItemMapper itemMapper;
-
-    public OrderAdapter(OrderEntityRepository repository, 
-                         UserEntityRepository repositoryUser,
-                         ItemMapper itemMapper) {
-        this.repository = repository;
-        this.repositoryUser = repositoryUser;
-        this.itemMapper = itemMapper;
-    }
 
     @Override
     public Order save(Order order) {
-        UserEntity user = repositoryUser.getReferenceById(order.getId());
+        UserEntity user = userRepository.getReferenceById(order.getId());
 
         List<ItemEntity> itemEntities = order.getItems().stream()
                 .map(itemMapper::toEntity)
@@ -56,7 +51,7 @@ public class OrderAdapter implements OrderRepository {
 
     @Override
     public Order delete(Order order) {
-        UserEntity user = repositoryUser.getReferenceById(order.getId());
+        UserEntity user = userRepository.getReferenceById(order.getId());
 
         List<ItemEntity> itemEntities = order.getItems().stream()
                 .map(itemMapper::toEntity)

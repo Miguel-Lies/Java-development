@@ -1,9 +1,8 @@
-package com.studies.hexagonal.domain.model;
+package com.studies.hexagonal.application.dto.response;
 
 import java.util.UUID;
 
-public class Address {
-    
+public class AddressResponse {
     private UUID userId;
     private String country;
     private String postalCode;
@@ -13,7 +12,7 @@ public class Address {
     private String street;
     private String number;
 
-    public Address(UUID userId, String country, String postalCode, String state, String city, String neighborhood, String street, String number) {
+    public AddressResponse(UUID userId, String country, String postalCode, String state, String city, String neighborhood, String street, String number) {
         this.userId = userId;
         this.country = country;
         this.postalCode = postalCode;
@@ -22,6 +21,14 @@ public class Address {
         this.neighborhood = neighborhood;
         this.street = street;
         this.number = number;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
     public String getCountry() {
@@ -65,17 +72,5 @@ public class Address {
     }
     public void setNumber(String number) {
         this.number = number;
-    }
-
-
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
     }
 }

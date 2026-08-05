@@ -10,14 +10,13 @@ import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
 import com.studies.hexagonal.domain.model.User;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Component
 public class UserAdapter implements UserRepository {
 
     private final UserEntityRepository repository;
-
-    public UserAdapter(UserEntityRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public User save(User user) {

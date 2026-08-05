@@ -1,9 +1,8 @@
-package com.studies.hexagonal.domain.model;
+package com.studies.hexagonal.application.dto.request;
 
 import java.util.UUID;
 
-public class Address {
-    
+public class AddressRequest {
     private UUID userId;
     private String country;
     private String postalCode;
@@ -13,7 +12,7 @@ public class Address {
     private String street;
     private String number;
 
-    public Address(UUID userId, String country, String postalCode, String state, String city, String neighborhood, String street, String number) {
+    public AddressRequest(UUID userId, String country, String postalCode, String state, String city, String neighborhood, String street, String number) {
         this.userId = userId;
         this.country = country;
         this.postalCode = postalCode;

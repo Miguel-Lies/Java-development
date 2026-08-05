@@ -12,16 +12,14 @@ import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Component
 public class ItemAdapter implements ItemRepository {
 
     private final ItemEntityRepository repository;
     private final SellerEntityRepository sellerRepository;
-
-    public ItemAdapter(ItemEntityRepository repository, SellerEntityRepository sellerRepository){
-        this.repository = repository;
-        this.sellerRepository = sellerRepository;
-    }
 
     @Override
 public Item add(Item item) {

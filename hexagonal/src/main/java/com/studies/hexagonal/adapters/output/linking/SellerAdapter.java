@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+
 import com.studies.hexagonal.adapters.output.entity.SellerEntity;
 import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
@@ -11,13 +13,13 @@ import com.studies.hexagonal.application.port.output.persistence.repository.Sell
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.domain.model.Seller;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Component
 public class SellerAdapter implements SellerRepository{
     
     private final SellerEntityRepository repository;
-
-    public SellerAdapter(SellerEntityRepository repository){
-        this.repository = repository;
-    }
 
     @Override
     public Seller save(Seller seller) {
