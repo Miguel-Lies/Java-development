@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.studies.hexagonal.application.port.input.usecases.address.AddAddressUseCase;
+import com.studies.hexagonal.application.port.input.usecases.address.RemoveAddressUseCase;
 import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.DeleteItemUseCase;
+import com.studies.hexagonal.application.port.input.usecases.item.RemoveItemUseCase;
 import com.studies.hexagonal.application.port.input.usecases.order.CancelOrderUseCase;
 import com.studies.hexagonal.application.port.input.usecases.order.CreateOrderUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
@@ -15,6 +17,7 @@ import com.studies.hexagonal.application.port.input.usecases.user.output.persist
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.application.port.output.persistence.repository.AddressRepository;
 
 @Configuration
 public class UseCaseConfig {
@@ -35,8 +38,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public DeleteItemUseCase deleteItemUseCase(ItemRepository repository){
-        return new DeleteItemUseCase(repository);
+    public RemoveItemUseCase deleteItemUseCase(ItemRepository repository){
+        return new RemoveItemUseCase(repository);
     }
 
     @Bean
@@ -52,5 +55,15 @@ public class UseCaseConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AddAddressUseCase addAddressUseCase(AddressRepository repository){
+        return new AddAddressUseCase(repository);
+    }
+
+    @Bean
+    public RemoveAddressUseCase removeAddressUseCase(AddressRepository repository){
+        return new RemoveAddressUseCase(repository);
     }
 }

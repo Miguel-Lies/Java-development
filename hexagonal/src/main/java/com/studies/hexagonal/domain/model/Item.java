@@ -30,8 +30,6 @@ public class Item {
     public Item() {
     }
 
-    
-
     public int getQuantity() {
         return quantity;
     }

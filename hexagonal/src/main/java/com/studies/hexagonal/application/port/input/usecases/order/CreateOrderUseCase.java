@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import com.studies.hexagonal.domain.model.Order;
-import com.studies.hexagonal.application.dto.response.OrderResponse;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.shared.exceptions.EmptyOrderException;

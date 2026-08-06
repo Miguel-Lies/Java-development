@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class AddressRequest {
     private UUID userId;
+
     private String country;
     private String postalCode;
     private String state;
@@ -21,6 +22,9 @@ public class AddressRequest {
         this.neighborhood = neighborhood;
         this.street = street;
         this.number = number;
+    }
+
+    public AddressRequest() {
     }
 
     public UUID getUserId() {

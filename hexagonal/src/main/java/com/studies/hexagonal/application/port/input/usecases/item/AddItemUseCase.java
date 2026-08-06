@@ -1,6 +1,8 @@
 package com.studies.hexagonal.application.port.input.usecases.item;
 
+import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.application.dto.request.ItemRequest;
+import com.studies.hexagonal.application.dto.response.ItemResponse;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 
@@ -12,12 +14,15 @@ public class AddItemUseCase {
         this.repository = repository;
     }
 
-    public Item execute(ItemRequest request){
+    public ItemResponse execute(ItemRequest request){
         Item item = new Item();
+        item.setSellerId(request.getSellerid());
         item.setName(request.getName());
         item.setPrice(request.getPrice());
         item.setQuantity(request.getQuantity());
 
-        return repository.add(item);
+        Item savedItem = repository.add(item);
+
+        return ItemMapper.toResponse(savedItem);
     }
 }

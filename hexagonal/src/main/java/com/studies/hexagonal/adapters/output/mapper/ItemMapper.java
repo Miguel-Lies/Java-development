@@ -41,6 +41,7 @@ public class ItemMapper {
     public static ItemResponse toResponse(Item item) {
         return new ItemResponse(
                 item.getId(),
+                item.getSellerId(),
                 item.getName(),
                 item.getQuantity(),
                 item.getPrice());

@@ -22,50 +22,49 @@ public class ItemAdapter implements ItemRepository {
     private final SellerEntityRepository sellerRepository;
 
     @Override
-public Item add(Item item) {
-    SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
+    public Item add(Item item) {
+        SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
 
-    ItemEntity entity = new ItemEntity(
+        ItemEntity entity = new ItemEntity(
             item.getId(),
             seller,
             item.getName(),
             item.getQuantity(),
             item.getPrice());
 
-    ItemEntity itemSaved = repository.save(entity);
+            ItemEntity itemSaved = repository.save(entity);
 
-    return new Item(
-            itemSaved.getId(),
-            itemSaved.getSellerId().getId(),
-            itemSaved.getName(),
-            itemSaved.getQuantity(),
-            itemSaved.getPrice());
-}
+            return new Item(
     
-    @Override
-    public Item delete(Item item){
-        SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
+                itemSaved.getId(),
+                itemSaved.getSellerId().getId(),
+                itemSaved.getName(),
+                itemSaved.getQuantity(),
+                itemSaved.getPrice());
+            }
+    
+            @Override
+            public Item delete(Item item){
+                SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
+                ItemEntity entity = new ItemEntity(
+                    item.getId(),
+                    seller,
+                    item.getName(),
+                    item.getQuantity(),
+                    item.getPrice());
+                    repository.delete(entity);
+                    
+                    return item;
+                }
 
-        ItemEntity entity = new ItemEntity(
-        item.getId(),
-        seller,
-        item.getName(),
-        item.getQuantity(),
-        item.getPrice());
-
-        repository.delete(entity);
-
-        return item;
-    }
-
-    @Override
-    public Optional<Item> findById(UUID id){
-        return repository.findById(id)
-        .map(entity -> new Item(
-            entity.getId(),
-            entity.getName(),
-            entity.getQuantity(),
-            entity.getPrice()
-        ));
-    }
-}
+                @Override
+                public Optional<Item> findById(UUID id){
+                    return repository.findById(id)
+                    .map(entity -> new Item(
+                        entity.getId(),
+                        entity.getName(),
+                        entity.getQuantity(),
+                        entity.getPrice()
+                    ));
+                }
+            }

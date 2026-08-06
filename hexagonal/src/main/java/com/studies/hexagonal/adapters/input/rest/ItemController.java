@@ -3,12 +3,10 @@ package com.studies.hexagonal.adapters.input.rest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.application.dto.request.ItemRequest;
 import com.studies.hexagonal.application.dto.response.ItemResponse;
 import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.domain.model.Item;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,11 +30,10 @@ public class ItemController {
     private final DeleteUserUseCase delete;
 
     @PostMapping("/create")
-    public ResponseEntity<ItemResponse> create(@RequestBody ItemRequest request) {
-        Item item = add.execute(request);
-        ItemResponse response = ItemMapper.toResponse(item);
-        
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+public ResponseEntity<ItemResponse> create(@RequestBody ItemRequest request) {
+    ItemResponse response = add.execute(request);
+
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @DeleteMapping("/delete")

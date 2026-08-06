@@ -4,30 +4,53 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.studies.hexagonal.adapters.output.entity.SellerEntity;
+import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
+import com.studies.hexagonal.application.dto.request.ItemRequest;
 import com.studies.hexagonal.application.dto.request.UserRequest;
+import com.studies.hexagonal.application.dto.response.ItemResponse;
 import com.studies.hexagonal.application.dto.response.UserResponse;
+import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
+import com.studies.hexagonal.application.port.input.usecases.item.RemoveItemUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.interfaces.PasswordEncoderPort;
+import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.UserRepository;
 import com.studies.hexagonal.domain.model.User;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
+
 @SpringBootTest
 class HexagonalApplicationTests {
 
 	@Autowired
-	UserRepository repository;
+	UserRepository userRepository;
 
 	@Autowired
-	CreateUserUseCase create;
+	CreateUserUseCase createUser;
 
 	@Autowired
-	DeleteUserUseCase delete;
+	DeleteUserUseCase deleteUser;
 
 	@Autowired
 	PasswordEncoderPort encoder;
+
+	//user test
+
+	@Autowired
+	AddItemUseCase  addItem;
+
+	@Autowired
+	RemoveItemUseCase removeItem;
+
+	@Autowired
+	ItemRepository itemRepository;
+
+	@Autowired
+	SellerEntityRepository sellerEntityRepository;
 
 	@Test
 	void succesCreate() {
@@ -36,13 +59,13 @@ class HexagonalApplicationTests {
         request.setEmail("testeunit@gmail.com");
         request.setPassword("123456");
 
-        UserResponse response = create.execute(request);
+        UserResponse response = createUser.execute(request);
 
         assertThat(response.getId()).isNotNull();
         assertThat(response.getName()).isEqualTo("seyi");
         assertThat(response.getEmail()).isEqualTo("testeunit@gmail.com");
 
-        User persisted = repository.findById(response.getId()).orElseThrow();
+        User persisted = userRepository.findById(response.getId()).orElseThrow();
         assertThat(encoder.matches("123456", persisted.getPassword())).isTrue();
     }
 
@@ -52,11 +75,35 @@ class HexagonalApplicationTests {
 		user.setName("seyi");
 		user.setEmail("delete-test@gmail.com");
 		user.setPassword(encoder.encode("123456"));
-		User saved = repository.save(user);
+		User saved = userRepository.save(user);
 
-		delete.execute(saved.getId());
+		deleteUser.execute(saved.getId());
 
-		assertThat(repository.findById(saved.getId())).isEmpty();
+		assertThat(userRepository.findById(saved.getId())).isEmpty();
 	}
 
-}
+	@Test
+    void addItemSucces(){
+		SellerEntity seller = sellerEntityRepository.save(
+			SellerEntity.builder()
+                .name("lies")
+                .nameEnterprise("liesCompany")
+                .cnpjOfEnterprise("845638459-12")
+                .email("liestest@gmail.com")
+                .build()
+			);
+
+			ItemRequest request = new ItemRequest();
+			request.setSelleri(seller.getId());
+			request.setName("teclado ajazz nk68 v2");
+			request.setPrice(BigDecimal.valueOf(220));
+			request.setQuantity(13);
+
+			ItemResponse response = addItem.execute(request);
+
+			assertThat(response.getId()).isNotNull();
+			assertThat(response.getName()).isNotBlank();
+			assertThat(response.getPrice()).isNotNull();
+			assertThat(response.getQuantity()).isNotNull();
+		}
+	}
