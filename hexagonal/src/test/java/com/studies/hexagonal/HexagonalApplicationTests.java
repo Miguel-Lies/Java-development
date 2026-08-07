@@ -29,6 +29,8 @@ import java.util.List;
 @SpringBootTest
 class HexagonalApplicationTests {
 
+        //user test
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -41,7 +43,7 @@ class HexagonalApplicationTests {
 	@Autowired
 	PasswordEncoderPort encoder;
 
-	//user test
+        //item test
 
 	@Autowired
 	AddItemUseCase  addItem;
