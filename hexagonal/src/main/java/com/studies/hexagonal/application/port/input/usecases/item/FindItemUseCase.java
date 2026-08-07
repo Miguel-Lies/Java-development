@@ -1,24 +1,26 @@
 package com.studies.hexagonal.application.port.input.usecases.item;
 
-import java.util.UUID;
+import java.util.List;
 
 import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.shared.exceptions.NotFoundItemException;
 
-public class RemoveItemUseCase {
-
+public class FindItemUseCase {
+    
     private final ItemRepository repository;
 
-    public RemoveItemUseCase(ItemRepository repository){
+    public FindItemUseCase(ItemRepository repository){
         this.repository = repository;
     }
 
-    public Item execute(UUID id){
-        Item item = repository.findById(id)
-        .orElseThrow(() -> new NotFoundItemException("Not found item"));
-
-        return repository.delete(item);
+    public List<Item> execute(String name) {
+    List<Item> items = repository.findByName(name);
+    
+    if (items.isEmpty()) {
+        throw new NotFoundItemException("The item: "+name+" not found.");
     }
     
+    return items;
+    }
 }

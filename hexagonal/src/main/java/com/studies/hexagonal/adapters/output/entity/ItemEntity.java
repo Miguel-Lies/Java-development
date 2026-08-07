@@ -20,7 +20,7 @@ public class ItemEntity {
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
-    private SellerEntity sellerId;
+    private SellerEntity seller;
 
     @Column(nullable = false)
     private String name;

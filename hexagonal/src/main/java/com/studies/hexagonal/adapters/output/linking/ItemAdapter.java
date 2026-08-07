@@ -1,5 +1,6 @@
 package com.studies.hexagonal.adapters.output.linking;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -7,23 +8,24 @@ import org.springframework.stereotype.Component;
 
 import com.studies.hexagonal.adapters.output.entity.ItemEntity;
 import com.studies.hexagonal.adapters.output.entity.SellerEntity;
+import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.adapters.output.repository.ItemEntityRepository;
 import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
-import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
 import com.studies.hexagonal.domain.model.Item;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component
-public class ItemAdapter implements ItemRepository {
+public class ItemAdapter implements ItemRepository{
 
     private final ItemEntityRepository repository;
     private final SellerEntityRepository sellerRepository;
 
     @Override
     public Item add(Item item) {
-        SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
+        SellerEntity seller = sellerRepository.getReferenceById(item.getSeller());
 
         ItemEntity entity = new ItemEntity(
             item.getId(),
@@ -37,7 +39,7 @@ public class ItemAdapter implements ItemRepository {
             return new Item(
     
                 itemSaved.getId(),
-                itemSaved.getSellerId().getId(),
+                itemSaved.getSeller().getId(),
                 itemSaved.getName(),
                 itemSaved.getQuantity(),
                 itemSaved.getPrice());
@@ -45,7 +47,7 @@ public class ItemAdapter implements ItemRepository {
     
             @Override
             public Item delete(Item item){
-                SellerEntity seller = sellerRepository.getReferenceById(item.getSellerId());
+                SellerEntity seller = sellerRepository.getReferenceById(item.getSeller());
                 ItemEntity entity = new ItemEntity(
                     item.getId(),
                     seller,
@@ -62,9 +64,18 @@ public class ItemAdapter implements ItemRepository {
                     return repository.findById(id)
                     .map(entity -> new Item(
                         entity.getId(),
+                        entity.getSeller().getId(),
                         entity.getName(),
                         entity.getQuantity(),
                         entity.getPrice()
                     ));
                 }
+
+                @Override
+                public List<Item> findByName(String name) {
+                    return repository.findByName(name)
+                    .stream()
+                    .map(ItemMapper::toDomain)
+                    .toList();
             }
+        }

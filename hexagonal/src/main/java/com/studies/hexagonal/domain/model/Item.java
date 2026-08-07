@@ -6,22 +6,22 @@ import java.util.UUID;
 public class Item {
     
     private UUID id;
-    private UUID sellerId;
+    private UUID seller;
     private String name;
     private int quantity;
     private BigDecimal price;
 
 
-    public Item(UUID sellerId, String name, int quantity, BigDecimal price) {
-        this.sellerId = sellerId;
+    public Item(UUID seller, String name, int quantity, BigDecimal price) {
+        this.seller = seller;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Item(UUID id, UUID sellerId, String name, int quantity, BigDecimal price) {
+    public Item(UUID id, UUID seller, String name, int quantity, BigDecimal price) {
         this.id = id;
-        this.sellerId = sellerId;
+        this.seller = seller;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -66,12 +66,12 @@ public class Item {
         this.name = name;
     }
 
-    public UUID getSellerId() {
-        return sellerId;
+    public UUID getSeller() {
+        return seller;
     }
 
-    public void setSellerId(UUID sellerId) {
-        this.sellerId = sellerId;
+    public void setSeller(UUID sellerId) {
+        this.seller = sellerId;
     }
     
 }

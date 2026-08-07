@@ -26,7 +26,7 @@ public class SellerEntity {
     @Column(nullable = true)
     private String nameEnterprise;
 
-    @OneToMany(mappedBy = "sellerId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> products = new ArrayList<>();
 
     @Column(nullable = false)

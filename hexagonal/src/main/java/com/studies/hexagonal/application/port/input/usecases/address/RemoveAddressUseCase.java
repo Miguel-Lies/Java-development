@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import com.studies.hexagonal.application.port.output.persistence.repository.AddressRepository;
 import com.studies.hexagonal.domain.model.Address;
-import com.studies.hexagonal.shared.exceptions.NotFoundAddress;
+import com.studies.hexagonal.shared.exceptions.NotFoundAddressException;
 
 public class RemoveAddressUseCase {
     private final AddressRepository repository;
@@ -15,7 +15,7 @@ public class RemoveAddressUseCase {
 
     public Address execute(UUID id){
         Address address = repository.findById(id)
-        .orElseThrow(() -> new NotFoundAddress("Not found Address"));
+        .orElseThrow(() -> new NotFoundAddressException("Not found Address"));
 
         return repository.delete(address);
     }

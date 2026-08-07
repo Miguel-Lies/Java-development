@@ -18,11 +18,11 @@ public class ItemMapper {
     }
 
     public ItemEntity toEntity(Item item) {
-        SellerEntity sellerRef = sellerEntityRepository.getReferenceById(item.getSellerId());
+        SellerEntity sellerRef = sellerEntityRepository.getReferenceById(item.getSeller());
 
         return ItemEntity.builder()
                 .id(item.getId())
-                .sellerId(sellerRef)
+                .seller(sellerRef)
                 .name(item.getName())
                 .quantity(item.getQuantity())
                 .price(item.getPrice())
@@ -32,7 +32,7 @@ public class ItemMapper {
     public static Item toDomain(ItemEntity entity) {
         return new Item(
                 entity.getId(),
-                entity.getSellerId().getId(),
+                entity.getSeller().getId(),
                 entity.getName(),
                 entity.getQuantity(),
                 entity.getPrice());
@@ -41,7 +41,7 @@ public class ItemMapper {
     public static ItemResponse toResponse(Item item) {
         return new ItemResponse(
                 item.getId(),
-                item.getSellerId(),
+                item.getSeller(),
                 item.getName(),
                 item.getQuantity(),
                 item.getPrice());

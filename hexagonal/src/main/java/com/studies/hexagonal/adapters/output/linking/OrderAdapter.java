@@ -12,7 +12,7 @@ import com.studies.hexagonal.adapters.output.entity.UserEntity;
 import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
 import com.studies.hexagonal.adapters.output.repository.OrderEntityRepository;
 import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
-import com.studies.hexagonal.application.port.input.usecases.user.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
 import com.studies.hexagonal.domain.model.Item;
 import com.studies.hexagonal.domain.model.Order;
 import com.studies.hexagonal.shared.enums.OrderStatus;
