@@ -1,4 +1,4 @@
-package com.studies.hexagonal.shared.enums;
+package com.studies.hexagonal.Shared.enums;
 
 public enum OrderStatus {
     TOCREATE,

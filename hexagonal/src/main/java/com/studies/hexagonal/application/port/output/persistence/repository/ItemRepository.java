@@ -1,10 +1,10 @@
-package com.studies.hexagonal.application.port.output.persistence.repository;
+package com.studies.hexagonal.Application.port.output.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.studies.hexagonal.domain.model.Item;
+import com.studies.hexagonal.Domain.model.Item;
 
 public interface ItemRepository {
     Item add(Item item);

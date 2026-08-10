@@ -1,4 +1,4 @@
-package com.studies.hexagonal.domain.model;
+package com.studies.hexagonal.Domain.model;
 
 import java.math.BigDecimal;
 import java.util.UUID;

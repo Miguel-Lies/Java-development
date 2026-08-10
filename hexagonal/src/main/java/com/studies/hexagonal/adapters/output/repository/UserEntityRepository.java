@@ -1,8 +1,8 @@
-package com.studies.hexagonal.adapters.output.repository;
+package com.studies.hexagonal.Adapters.output.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.studies.hexagonal.adapters.output.entity.UserEntity;
+import com.studies.hexagonal.Adapters.output.entity.UserEntity;
 
 import java.util.UUID;
 

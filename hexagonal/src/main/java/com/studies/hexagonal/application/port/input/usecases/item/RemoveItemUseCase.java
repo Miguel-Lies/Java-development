@@ -1,10 +1,10 @@
-package com.studies.hexagonal.application.port.input.usecases.item;
+package com.studies.hexagonal.Application.port.input.usecases.item;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
-import com.studies.hexagonal.domain.model.Item;
-import com.studies.hexagonal.shared.exceptions.NotFoundItemException;
+import com.studies.hexagonal.Application.port.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Shared.exceptions.NotFoundItemException;
 
 public class RemoveItemUseCase {
 

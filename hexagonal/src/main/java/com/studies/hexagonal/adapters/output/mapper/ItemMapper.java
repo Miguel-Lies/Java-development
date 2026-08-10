@@ -1,12 +1,12 @@
-package com.studies.hexagonal.adapters.output.mapper;
+package com.studies.hexagonal.Adapters.output.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.studies.hexagonal.adapters.output.entity.ItemEntity;
-import com.studies.hexagonal.adapters.output.entity.SellerEntity;
-import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
-import com.studies.hexagonal.application.dto.response.ItemResponse;
-import com.studies.hexagonal.domain.model.Item;
+import com.studies.hexagonal.Adapters.output.entity.ItemEntity;
+import com.studies.hexagonal.Adapters.output.entity.SellerEntity;
+import com.studies.hexagonal.Adapters.output.repository.SellerEntityRepository;
+import com.studies.hexagonal.Application.dto.response.ItemResponse;
+import com.studies.hexagonal.Domain.model.Item;
 
 @Component
 public class ItemMapper {

@@ -4,22 +4,22 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.studies.hexagonal.adapters.output.entity.SellerEntity;
-import com.studies.hexagonal.adapters.output.repository.SellerEntityRepository;
-import com.studies.hexagonal.application.dto.request.ItemRequest;
-import com.studies.hexagonal.application.dto.request.UserRequest;
-import com.studies.hexagonal.application.dto.response.ItemResponse;
-import com.studies.hexagonal.application.dto.response.UserResponse;
-import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.FindItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.RemoveItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
-import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.application.port.output.persistence.interfaces.PasswordEncoderPort;
-import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
-import com.studies.hexagonal.domain.model.Item;
-import com.studies.hexagonal.domain.model.User;
+import com.studies.hexagonal.Adapters.output.entity.SellerEntity;
+import com.studies.hexagonal.Adapters.output.repository.SellerEntityRepository;
+import com.studies.hexagonal.Application.dto.request.ItemRequest;
+import com.studies.hexagonal.Application.dto.request.UserRequest;
+import com.studies.hexagonal.Application.dto.response.ItemResponse;
+import com.studies.hexagonal.Application.dto.response.UserResponse;
+import com.studies.hexagonal.Application.port.input.usecases.item.AddItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.item.FindItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.item.RemoveItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.CreateUserUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.DeleteUserUseCase;
+import com.studies.hexagonal.Application.port.output.persistence.interfaces.PasswordEncoderPort;
+import com.studies.hexagonal.Application.port.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Domain.model.User;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,7 +29,7 @@ import java.util.List;
 @SpringBootTest
 class HexagonalApplicationTests {
 
-        //user test
+	//user test
 
 	@Autowired
 	UserRepository userRepository;
@@ -43,7 +43,7 @@ class HexagonalApplicationTests {
 	@Autowired
 	PasswordEncoderPort encoder;
 
-        //item test
+	//item test
 
 	@Autowired
 	AddItemUseCase  addItem;
@@ -60,8 +60,10 @@ class HexagonalApplicationTests {
 	@Autowired
 	FindItemUseCase findItemUseCase;
 
+	//user tests
+
 	@Test
-	void succesCreate() {
+	void succesUserCreate() {
 		UserRequest request = new UserRequest();
         request.setName("seyi");
         request.setEmail("testeunit@gmail.com");
@@ -78,7 +80,7 @@ class HexagonalApplicationTests {
     }
 
 	@Test
-	void succesDelete() {
+	void succesUserDelete() {
 		User user = new User();
 		user.setName("seyi");
 		user.setEmail("delete-test@gmail.com");
@@ -89,6 +91,8 @@ class HexagonalApplicationTests {
 
 		assertThat(userRepository.findById(saved.getId())).isEmpty();
 	}
+
+	//item tests
 
 	@Test
     void addItemSucces(){

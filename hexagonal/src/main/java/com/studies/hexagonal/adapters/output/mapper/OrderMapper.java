@@ -1,11 +1,11 @@
-package com.studies.hexagonal.adapters.output.mapper;
+package com.studies.hexagonal.Adapters.output.mapper;
 
-import com.studies.hexagonal.adapters.output.entity.ItemEntity;
-import com.studies.hexagonal.adapters.output.entity.OrderEntity;
-import com.studies.hexagonal.application.dto.response.ItemResponse;
-import com.studies.hexagonal.application.dto.response.OrderResponse;
-import com.studies.hexagonal.domain.model.Item;
-import com.studies.hexagonal.domain.model.Order;
+import com.studies.hexagonal.Adapters.output.entity.ItemEntity;
+import com.studies.hexagonal.Adapters.output.entity.OrderEntity;
+import com.studies.hexagonal.Application.dto.response.ItemResponse;
+import com.studies.hexagonal.Application.dto.response.OrderResponse;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Domain.model.Order;
 
 import java.util.List;
 

@@ -1,24 +1,24 @@
-package com.studies.hexagonal.config;
+package com.studies.hexagonal.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.studies.hexagonal.application.port.input.usecases.address.AddAddressUseCase;
-import com.studies.hexagonal.application.port.input.usecases.address.RemoveAddressUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.FindItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.item.RemoveItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.order.CancelOrderUseCase;
-import com.studies.hexagonal.application.port.input.usecases.order.CreateOrderUseCase;
-import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
-import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.application.port.output.persistence.interfaces.PasswordEncoderPort;
-import com.studies.hexagonal.application.port.output.persistence.repository.AddressRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.ItemRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.Application.port.input.usecases.address.AddAddressUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.address.RemoveAddressUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.item.AddItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.item.FindItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.item.RemoveItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.order.CancelOrderUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.order.CreateOrderUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.CreateUserUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.DeleteUserUseCase;
+import com.studies.hexagonal.Application.port.output.persistence.interfaces.PasswordEncoderPort;
+import com.studies.hexagonal.Application.port.output.persistence.repository.AddressRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.ItemRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.UserRepository;
 
 
 

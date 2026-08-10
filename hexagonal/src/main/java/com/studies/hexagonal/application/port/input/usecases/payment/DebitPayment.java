@@ -1,4 +1,4 @@
-package com.studies.hexagonal.application.port.input.usecases.payment;
+package com.studies.hexagonal.Application.port.input.usecases.payment;
 
 public class DebitPayment implements PaymentInterface {
 

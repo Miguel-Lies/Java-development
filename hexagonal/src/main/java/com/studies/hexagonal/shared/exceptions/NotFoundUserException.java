@@ -1,4 +1,4 @@
-package com.studies.hexagonal.shared.exceptions;
+package com.studies.hexagonal.Shared.exceptions;
 
 public class NotFoundUserException extends RuntimeException {
     public NotFoundUserException(String message){

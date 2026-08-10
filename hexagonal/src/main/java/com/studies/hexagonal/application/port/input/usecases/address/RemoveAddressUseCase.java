@@ -1,10 +1,10 @@
-package com.studies.hexagonal.application.port.input.usecases.address;
+package com.studies.hexagonal.Application.port.input.usecases.address;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.AddressRepository;
-import com.studies.hexagonal.domain.model.Address;
-import com.studies.hexagonal.shared.exceptions.NotFoundAddressException;
+import com.studies.hexagonal.Application.port.output.persistence.repository.AddressRepository;
+import com.studies.hexagonal.Domain.model.Address;
+import com.studies.hexagonal.Shared.exceptions.NotFoundAddressException;
 
 public class RemoveAddressUseCase {
     private final AddressRepository repository;

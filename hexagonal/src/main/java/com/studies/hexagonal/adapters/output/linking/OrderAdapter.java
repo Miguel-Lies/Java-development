@@ -1,4 +1,4 @@
-package com.studies.hexagonal.adapters.output.linking;
+package com.studies.hexagonal.Adapters.output.linking;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,16 +6,16 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import com.studies.hexagonal.adapters.output.entity.ItemEntity;
-import com.studies.hexagonal.adapters.output.entity.OrderEntity;
-import com.studies.hexagonal.adapters.output.entity.UserEntity;
-import com.studies.hexagonal.adapters.output.mapper.ItemMapper;
-import com.studies.hexagonal.adapters.output.repository.OrderEntityRepository;
-import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
-import com.studies.hexagonal.domain.model.Item;
-import com.studies.hexagonal.domain.model.Order;
-import com.studies.hexagonal.shared.enums.OrderStatus;
+import com.studies.hexagonal.Adapters.output.entity.ItemEntity;
+import com.studies.hexagonal.Adapters.output.entity.OrderEntity;
+import com.studies.hexagonal.Adapters.output.entity.UserEntity;
+import com.studies.hexagonal.Adapters.output.mapper.ItemMapper;
+import com.studies.hexagonal.Adapters.output.repository.OrderEntityRepository;
+import com.studies.hexagonal.Adapters.output.repository.UserEntityRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Domain.model.Order;
+import com.studies.hexagonal.Shared.enums.OrderStatus;
 
 import lombok.RequiredArgsConstructor;
 

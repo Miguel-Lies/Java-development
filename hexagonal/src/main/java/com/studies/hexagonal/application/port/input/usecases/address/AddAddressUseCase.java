@@ -1,8 +1,8 @@
-package com.studies.hexagonal.application.port.input.usecases.address;
+package com.studies.hexagonal.Application.port.input.usecases.address;
 
-import com.studies.hexagonal.application.dto.request.AddressRequest;
-import com.studies.hexagonal.application.port.output.persistence.repository.AddressRepository;
-import com.studies.hexagonal.domain.model.Address;
+import com.studies.hexagonal.Application.dto.request.AddressRequest;
+import com.studies.hexagonal.Application.port.output.persistence.repository.AddressRepository;
+import com.studies.hexagonal.Domain.model.Address;
 
 public class AddAddressUseCase {
     

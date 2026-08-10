@@ -1,4 +1,4 @@
-package com.studies.hexagonal.application.dto.request;
+package com.studies.hexagonal.Application.dto.request;
 
 import java.math.BigDecimal;
 import java.util.UUID;

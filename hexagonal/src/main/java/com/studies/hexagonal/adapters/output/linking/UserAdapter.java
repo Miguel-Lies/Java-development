@@ -1,14 +1,14 @@
-package com.studies.hexagonal.adapters.output.linking;
+package com.studies.hexagonal.Adapters.output.linking;
 
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import com.studies.hexagonal.adapters.output.entity.UserEntity;
-import com.studies.hexagonal.adapters.output.repository.UserEntityRepository;
-import com.studies.hexagonal.application.port.output.persistence.repository.UserRepository;
-import com.studies.hexagonal.domain.model.User;
+import com.studies.hexagonal.Adapters.output.entity.UserEntity;
+import com.studies.hexagonal.Adapters.output.repository.UserEntityRepository;
+import com.studies.hexagonal.Application.port.output.persistence.repository.UserRepository;
+import com.studies.hexagonal.Domain.model.User;
 
 import lombok.RequiredArgsConstructor;
 

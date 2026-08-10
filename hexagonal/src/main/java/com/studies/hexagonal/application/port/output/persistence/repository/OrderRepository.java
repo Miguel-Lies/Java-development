@@ -1,9 +1,9 @@
-package com.studies.hexagonal.application.port.output.persistence.repository;
+package com.studies.hexagonal.Application.port.output.persistence.repository;
 
 import java.util.Optional;
 import java.util.UUID;
 
-import com.studies.hexagonal.domain.model.Order;
+import com.studies.hexagonal.Domain.model.Order;
 
 public interface OrderRepository {
     Order save(Order order);

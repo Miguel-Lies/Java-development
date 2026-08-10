@@ -1,11 +1,11 @@
-package com.studies.hexagonal.domain.model;
+package com.studies.hexagonal.Domain.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import com.studies.hexagonal.shared.enums.OrderStatus;
+import com.studies.hexagonal.Shared.enums.OrderStatus;
 
 public class Order {
 

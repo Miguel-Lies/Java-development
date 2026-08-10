@@ -1,9 +1,9 @@
-package com.studies.hexagonal.adapters.output.linking;
+package com.studies.hexagonal.Adapters.output.linking;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.studies.hexagonal.application.port.output.persistence.interfaces.PasswordEncoderPort;
+import com.studies.hexagonal.Application.port.output.persistence.interfaces.PasswordEncoderPort;
 
 import lombok.RequiredArgsConstructor;
 

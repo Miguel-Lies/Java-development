@@ -1,12 +1,12 @@
-package com.studies.hexagonal.application.port.input.usecases.order;
+package com.studies.hexagonal.Application.port.input.usecases.order;
 
 import java.util.List;
 import java.util.UUID;
 
-import com.studies.hexagonal.domain.model.Order;
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
-import com.studies.hexagonal.domain.model.Item;
-import com.studies.hexagonal.shared.exceptions.EmptyOrderException;
+import com.studies.hexagonal.Application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Domain.model.Order;
+import com.studies.hexagonal.Shared.exceptions.EmptyOrderException;
 
 public class CreateOrderUseCase {
     

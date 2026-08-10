@@ -1,6 +1,8 @@
-package com.studies.hexagonal.application.dto.response;
+package com.studies.hexagonal.Application.dto.response;
 
 import java.util.UUID;
+
+import com.studies.hexagonal.Domain.model.Address;
 
 public class AddressResponse {
     private UUID userId;
@@ -21,6 +23,19 @@ public class AddressResponse {
         this.neighborhood = neighborhood;
         this.street = street;
         this.number = number;
+    }
+
+    public static AddressResponse from(Address address) {
+        return new AddressResponse(
+            address.getUserId(),
+            address.getCountry(),
+            address.getPostalCode(),
+            address.getState(),
+            address.getCity(),
+            address.getNeighborhood(),
+            address.getStreet(),
+            address.getNumber()
+        );
     }
 
     public UUID getUserId() {

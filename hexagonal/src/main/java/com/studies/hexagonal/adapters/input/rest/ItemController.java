@@ -1,12 +1,12 @@
-package com.studies.hexagonal.adapters.input.rest;
+package com.studies.hexagonal.Adapters.input.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.studies.hexagonal.application.dto.request.ItemRequest;
-import com.studies.hexagonal.application.dto.response.ItemResponse;
-import com.studies.hexagonal.application.port.input.usecases.item.AddItemUseCase;
-import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
+import com.studies.hexagonal.Application.dto.request.ItemRequest;
+import com.studies.hexagonal.Application.dto.response.ItemResponse;
+import com.studies.hexagonal.Application.port.input.usecases.item.AddItemUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.DeleteUserUseCase;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,7 +30,7 @@ public class ItemController {
     private final DeleteUserUseCase delete;
 
     @PostMapping("/create")
-public ResponseEntity<ItemResponse> create(@RequestBody ItemRequest request) {
+    public ResponseEntity<ItemResponse> create(@RequestBody ItemRequest request) {
     ItemResponse response = add.execute(request);
 
     return ResponseEntity.status(HttpStatus.CREATED).body(response);

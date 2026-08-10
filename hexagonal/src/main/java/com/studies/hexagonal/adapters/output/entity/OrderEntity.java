@@ -1,9 +1,9 @@
-package com.studies.hexagonal.adapters.output.entity;
+package com.studies.hexagonal.Adapters.output.entity;
 
 import java.math.BigDecimal;
 import java.util.*;
 
-import com.studies.hexagonal.shared.enums.OrderStatus;
+import com.studies.hexagonal.Shared.enums.OrderStatus;
 
 import lombok.*;
 import jakarta.persistence.*;

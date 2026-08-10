@@ -1,14 +1,14 @@
-package com.studies.hexagonal.adapters.input.rest;
+package com.studies.hexagonal.Adapters.input.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.studies.hexagonal.adapters.output.mapper.OrderMapper;
-import com.studies.hexagonal.application.dto.request.OrderRequest;
-import com.studies.hexagonal.application.dto.response.OrderResponse;
-import com.studies.hexagonal.application.port.input.usecases.order.CancelOrderUseCase;
-import com.studies.hexagonal.application.port.input.usecases.order.CreateOrderUseCase;
-import com.studies.hexagonal.domain.model.Order;
+import com.studies.hexagonal.Adapters.output.mapper.OrderMapper;
+import com.studies.hexagonal.Application.dto.request.OrderRequest;
+import com.studies.hexagonal.Application.dto.response.OrderResponse;
+import com.studies.hexagonal.Application.port.input.usecases.order.CancelOrderUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.order.CreateOrderUseCase;
+import com.studies.hexagonal.Domain.model.Order;
 
 import lombok.RequiredArgsConstructor;
 

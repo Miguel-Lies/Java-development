@@ -1,4 +1,4 @@
-package com.studies.hexagonal.adapters.output.entity;
+package com.studies.hexagonal.Adapters.output.entity;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -19,7 +19,7 @@ public class ItemEntity {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id")
+    @JoinColumn(name = "seller")
     private SellerEntity seller;
 
     @Column(nullable = false)

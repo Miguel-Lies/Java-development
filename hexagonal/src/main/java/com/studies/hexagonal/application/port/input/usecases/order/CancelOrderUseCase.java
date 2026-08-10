@@ -1,11 +1,11 @@
-package com.studies.hexagonal.application.port.input.usecases.order;
+package com.studies.hexagonal.Application.port.input.usecases.order;
 
 import java.util.UUID;
 
-import com.studies.hexagonal.application.port.output.persistence.repository.OrderRepository;
-import com.studies.hexagonal.domain.model.Order;
-import com.studies.hexagonal.shared.enums.OrderStatus;
-import com.studies.hexagonal.shared.exceptions.OrderNotFoundException;
+import com.studies.hexagonal.Application.port.output.persistence.repository.OrderRepository;
+import com.studies.hexagonal.Domain.model.Order;
+import com.studies.hexagonal.Shared.enums.OrderStatus;
+import com.studies.hexagonal.Shared.exceptions.OrderNotFoundException;
 
 public class CancelOrderUseCase {
 

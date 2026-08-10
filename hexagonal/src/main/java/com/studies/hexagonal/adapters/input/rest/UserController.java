@@ -1,12 +1,12 @@
-package com.studies.hexagonal.adapters.input.rest;
+package com.studies.hexagonal.Adapters.input.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.studies.hexagonal.application.port.input.usecases.user.DeleteUserUseCase;
-import com.studies.hexagonal.application.dto.request.UserRequest;
-import com.studies.hexagonal.application.dto.response.UserResponse;
-import com.studies.hexagonal.application.port.input.usecases.user.CreateUserUseCase;
+import com.studies.hexagonal.Application.dto.request.UserRequest;
+import com.studies.hexagonal.Application.dto.response.UserResponse;
+import com.studies.hexagonal.Application.port.input.usecases.user.CreateUserUseCase;
+import com.studies.hexagonal.Application.port.input.usecases.user.DeleteUserUseCase;
 
 import lombok.RequiredArgsConstructor;
 

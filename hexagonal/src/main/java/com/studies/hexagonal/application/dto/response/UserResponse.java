@@ -1,4 +1,4 @@
-package com.studies.hexagonal.application.dto.response;
+package com.studies.hexagonal.Application.dto.response;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.studies.hexagonal.shared.exceptions;
+package com.studies.hexagonal.Shared.exceptions;
 
 public class EmptyOrderException extends RuntimeException{
     public EmptyOrderException(String message){

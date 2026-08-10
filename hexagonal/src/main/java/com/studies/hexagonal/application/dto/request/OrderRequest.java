@@ -1,13 +1,13 @@
-package com.studies.hexagonal.application.dto.request;
+package com.studies.hexagonal.Application.dto.request;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
-import com.studies.hexagonal.domain.model.User;
-import com.studies.hexagonal.shared.enums.OrderStatus;
-import com.studies.hexagonal.domain.model.Item;
+import com.studies.hexagonal.Domain.model.Item;
+import com.studies.hexagonal.Domain.model.User;
+import com.studies.hexagonal.Shared.enums.OrderStatus;
 
 public class OrderRequest {
 

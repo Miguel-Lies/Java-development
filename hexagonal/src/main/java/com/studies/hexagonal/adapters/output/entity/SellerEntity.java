@@ -1,4 +1,4 @@
-package com.studies.hexagonal.adapters.output.entity;
+package com.studies.hexagonal.Adapters.output.entity;
 
 import lombok.*;
 
