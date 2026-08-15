@@ -16,8 +16,6 @@ public class User {
         this.password = password;
     }
 
-    
-
     public User(UUID id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -28,8 +26,6 @@ public class User {
 
     public User() {
     }
-
-    
 
     public String getName() {
         return name;

@@ -31,8 +31,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public DeleteUserUseCase deleteUserUseCase(UserRepository repository, AddressRepository address){
-        return new DeleteUserUseCase(repository, address);
+    public DeleteUserUseCase deleteUserUseCase(UserRepository repository){
+        return new DeleteUserUseCase(repository);
     }
 
     @Bean
