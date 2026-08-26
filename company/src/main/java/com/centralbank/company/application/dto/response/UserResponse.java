@@ -1,36 +1,24 @@
-package com.centralbank.company.domain.model.user;
+package com.centralbank.company.application.dto.response;
 
-public class User {
+public class UserResponse {
     private Long id;
     private String name;
     private String email;
     private String cpf;
-    private Address address;
     private String password;
 
-    public User(String name, String email, String cpf, String password) {
-        this.name = name;
-        this.email = email;
-        this.cpf = cpf;
-        this.password = password;
-    }
-
-    public User(String name, String email, String cpf) {
+    public UserResponse(String name, String email, String cpf) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
     }
 
-
-    public User(Long id, String name, String email, String cpf, String password) {
+    public UserResponse(Long id, String name, String email, String cpf, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.password = password;
-    }
-
-    public User() {
     }
 
     public Long getId() {
@@ -72,12 +60,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
+

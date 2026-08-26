@@ -1,5 +1,7 @@
 package com.centralbank.company.adapters.output.linking;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.centralbank.company.adapters.output.entity.UserEntity;
@@ -44,6 +46,24 @@ public class UserAdapter implements UserRepository {
                 user.getPassword());
 
         repository.delete(entity);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return repository.findById(id)
+                .map(entity -> new User(
+                        entity.getName(),
+                        entity.getEmail(),
+                        entity.getCpf()));
+    }
+
+    @Override
+    public Optional<User> findByStr(String information) {
+        return repository.findByStr(information)
+                .map(entity -> new User(
+                        entity.getName(),
+                        entity.getEmail(),
+                        entity.getCpf()));
     }
 
 }
