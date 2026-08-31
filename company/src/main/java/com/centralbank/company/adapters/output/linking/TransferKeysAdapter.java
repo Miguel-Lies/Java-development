@@ -23,21 +23,16 @@ public class TransferKeysAdapter implements TransferKeysRepository {
         UserEntity userEntity = userRepository.getReferenceById(transferKey.getUserId());
 
         TransferKeysEntity entity = new TransferKeysEntity(
-                transferKey.getId(),
+                transferKey.getUserId(),
                 userEntity,
-                transferKey.getEmail(),
-                transferKey.getNumber(),
-                transferKey.getCpf(),
-                transferKey.getRandomKey());
+                transferKey.getType());
 
         TransferKeysEntity savedKey = keyRepository.save(entity);
 
         return new TransferKeys(
+                savedKey.getId(),
                 savedKey.getUser().getId(),
-                savedKey.getEmail(),
-                savedKey.getNumber(),
-                savedKey.getCpf(),
-                savedKey.getRandomKey());
+                savedKey.getKeyType());
     }
 
     @Override
@@ -45,12 +40,9 @@ public class TransferKeysAdapter implements TransferKeysRepository {
         UserEntity userEntity = userRepository.getReferenceById(transferKey.getUserId());
 
         TransferKeysEntity entity = new TransferKeysEntity(
-                transferKey.getId(),
+                transferKey.getUserId(),
                 userEntity,
-                transferKey.getEmail(),
-                transferKey.getNumber(),
-                transferKey.getCpf(),
-                transferKey.getRandomKey());
+                transferKey.getType());
 
         keyRepository.delete(entity);
     }

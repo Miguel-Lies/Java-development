@@ -1,6 +1,5 @@
 package com.centralbank.company.application.dto.request;
 
-import java.util.UUID;
 
 public class AddressRequest {
     private Long id;

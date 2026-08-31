@@ -1,6 +1,9 @@
 package com.centralbank.company.adapters.output.entity;
 
 import lombok.*;
+
+import com.centralbank.company.shared.enums.KeyType;
+
 import jakarta.persistence.*;
 
 @Getter
@@ -21,14 +24,6 @@ public class TransferKeysEntity {
     private UserEntity user;
 
     @Column(nullable = false)
-    private String email;
+    private KeyType keyType;
 
-    @Column(nullable = false)
-    private String number;
-
-    @Column(nullable = false)
-    private String cpf;
-
-    @Column(nullable = false)
-    private String randomKey;
 }

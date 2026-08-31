@@ -1,27 +1,13 @@
-package com.centralbank.company.domain.model.user;
+package com.centralbank.company.application.dto.request;
 
 import com.centralbank.company.shared.enums.KeyType;
 
-public class TransferKeys {
-    private Long id;
+public class TransferKeysRequest {
     private Long userId;
     private KeyType type;
     private String value;
     
-    public TransferKeys(Long id, Long userId, KeyType type, String value) {
-        this.id = id;
-        this.userId = userId;
-        this.type = type;
-        this.value = value;
-    }
-
-    public TransferKeys(Long id, Long userId, KeyType type) {
-        this.id = id;
-        this.userId = userId;
-        this.type = type;
-    }
-
-    public TransferKeys(Long userId, KeyType type, String value) {
+    public TransferKeysRequest(Long userId, KeyType type, String value) {
         this.userId = userId;
         this.type = type;
         this.value = value;
@@ -51,12 +37,6 @@ public class TransferKeys {
         this.value = value;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
     
 }
