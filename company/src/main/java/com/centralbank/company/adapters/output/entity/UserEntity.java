@@ -23,7 +23,13 @@ public class UserEntity {
     private String email;
 
     @Column(nullable = false)
+    private String phone;
+
+    @Column(nullable = false)
     private String cpf;
+
+    @Column(nullable = false)
+    private String randomKey;
 
     @Column(nullable = false)
     private String password;

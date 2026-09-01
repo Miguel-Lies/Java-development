@@ -23,7 +23,9 @@ public class UserAdapter implements UserRepository {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
+                user.getPhone(),
                 user.getCpf(),
+                user.getRandomKey(),
                 user.getPassword());
 
         UserEntity savedEntity = repository.save(entity);
@@ -42,7 +44,9 @@ public class UserAdapter implements UserRepository {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
+                user.getPhone(),
                 user.getCpf(),
+                user.getRandomKey(),
                 user.getPassword());
 
         repository.delete(entity);
@@ -54,15 +58,47 @@ public class UserAdapter implements UserRepository {
                 .map(entity -> new User(
                         entity.getName(),
                         entity.getEmail(),
+                        entity.getPhone(),
                         entity.getCpf()));
     }
 
     @Override
-    public Optional<User> findByStr(String information) {
-        return repository.findByStr(information)
+    public Optional<User> findByEmail(String email) {
+        return repository.findByEmail(email)
                 .map(entity -> new User(
                         entity.getName(),
                         entity.getEmail(),
+                        entity.getPhone(),
+                        entity.getCpf()));
+    }
+
+    @Override
+    public Optional<User> findByPhone(String phone) {
+        return repository.findByPhone(phone)
+                .map(entity -> new User(
+                        entity.getName(),
+                        entity.getEmail(),
+                        entity.getPhone(),
+                        entity.getCpf()));
+    }
+
+    @Override
+    public Optional<User> findByCpf(String cpf) {
+        return repository.findByCpf(cpf)
+                .map(entity -> new User(
+                        entity.getName(),
+                        entity.getEmail(),
+                        entity.getPhone(),
+                        entity.getCpf()));
+    }
+
+    @Override
+    public Optional<User> findByRandomKey(String randomKey) {
+        return repository.findByRandomKey(randomKey)
+                .map(entity -> new User(
+                        entity.getName(),
+                        entity.getEmail(),
+                        entity.getPhone(),
                         entity.getCpf()));
     }
 

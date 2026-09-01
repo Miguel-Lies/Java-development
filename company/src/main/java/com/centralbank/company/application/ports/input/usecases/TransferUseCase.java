@@ -29,25 +29,25 @@ public class TransferUseCase {
     }
 
     public TransferEnum transferByEmail(String email, BigDecimal amount) {
-        User receiver = userRepository.findByStr(email)
+        User receiver = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         return executeTransfer(receiver, amount);
     }
 
-    public TransferEnum transferByNumber(String number, BigDecimal amount) {
-        User receiver = userRepository.findByStr(number)
+    public TransferEnum transferByNumber(String phone, BigDecimal amount) {
+        User receiver = userRepository.findByPhone(phone)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         return executeTransfer(receiver, amount);
     }
 
     public TransferEnum transferByCpf(String cpf, BigDecimal amount) {
-        User receiver = userRepository.findByStr(cpf)
+        User receiver = userRepository.findByCpf(cpf)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         return executeTransfer(receiver, amount);
     }
 
     public TransferEnum transferByRandomKey(String randomKey, BigDecimal amount) {
-        User receiver = userRepository.findByStr(randomKey)
+        User receiver = userRepository.findByRandomKey(randomKey)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         return executeTransfer(receiver, amount);
     }

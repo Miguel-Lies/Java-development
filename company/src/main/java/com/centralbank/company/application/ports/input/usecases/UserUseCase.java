@@ -24,6 +24,7 @@ public class UserUseCase {
         User create = new User();
 
         create.setName(request.getName());
+        create.setPhone(request.getPhone());
         create.setEmail(request.getEmail());
         create.setCpf(request.getCpf());
         create.setPassword(encoder.encode(request.getPassword()));
@@ -33,12 +34,13 @@ public class UserUseCase {
         return new UserResponse(
                 saved.getName(),
                 saved.getEmail(),
+                saved.getPhone(),
                 saved.getCpf());
     }
 
-    public void delete(UserRequest request){
+    public void delete(UserRequest request) {
         User delete = repository.findById(request.getId())
-        .orElseThrow(() -> new UserNotFoundException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
 
         repository.delete(delete);
     }

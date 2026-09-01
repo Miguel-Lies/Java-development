@@ -4,7 +4,9 @@ public class User {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     private String cpf;
+    private String randomKey;
     private Address address;
     private String password;
 
@@ -15,12 +17,6 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String cpf) {
-        this.name = name;
-        this.email = email;
-        this.cpf = cpf;
-    }
-
 
     public User(Long id, String name, String email, String cpf, String password) {
         this.id = id;
@@ -29,6 +25,28 @@ public class User {
         this.cpf = cpf;
         this.password = password;
     }
+
+    public User(String name, String email, String cpf, String randomKey, Address address, String password) {
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.randomKey = randomKey;
+        this.address = address;
+        this.password = password;
+    }
+    
+
+    public User(String name, String email, String phone, String cpf, String randomKey, Address address,
+            String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.cpf = cpf;
+        this.randomKey = randomKey;
+        this.address = address;
+        this.password = password;
+    }
+
 
     public User() {
     }
@@ -79,5 +97,21 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getRandomKey() {
+        return randomKey;
+    }
+
+    public void setRandomKey(String randomKey) {
+        this.randomKey = randomKey;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -9,6 +9,9 @@ public interface UserRepository {
     void delete(User user);
 
     Optional<User> findById(Long id);
-    Optional<User> findByStr(String information);
+    Optional<User> findByEmail(String email);
+    Optional<User> findByCpf(String cpf);
+    Optional<User> findByPhone(String phone);
+    Optional<User> findByRandomKey(String randomKey);
     
 }

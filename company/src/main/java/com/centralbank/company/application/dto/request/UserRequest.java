@@ -4,6 +4,7 @@ public class UserRequest {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     private String cpf;
     private String password;
 
@@ -21,6 +22,7 @@ public class UserRequest {
         this.cpf = cpf;
         this.password = password;
     }
+    
 
     public Long getId() {
         return id;
@@ -60,5 +62,13 @@ public class UserRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

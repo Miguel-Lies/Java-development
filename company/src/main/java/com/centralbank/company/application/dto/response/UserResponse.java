@@ -4,12 +4,14 @@ public class UserResponse {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     private String cpf;
     private String password;
 
-    public UserResponse(String name, String email, String cpf) {
+    public UserResponse(String name, String email, String phone, String cpf) {
         this.name = name;
         this.email = email;
+        this.phone = phone;
         this.cpf = cpf;
     }
 
@@ -45,6 +47,14 @@ public class UserResponse {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -61,4 +71,3 @@ public class UserResponse {
         this.password = password;
     }
 }
-
