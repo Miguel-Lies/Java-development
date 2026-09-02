@@ -6,23 +6,14 @@ public class CDBs {
 
     private Long id;
     private Long userId;
-    private BigDecimal invested;
+    private BigDecimal amount;
     private BigDecimal annualRate;
     private int years;
     private BigDecimal expectedGain;
 
-    public CDBs(Long userId, BigDecimal invested, BigDecimal annualRate, int years, BigDecimal expectedGain) {
+    public CDBs(Long userId, BigDecimal amount, BigDecimal annualRate, int years, BigDecimal expectedGain) {
         this.userId = userId;
-        this.invested = invested;
-        this.annualRate = annualRate;
-        this.years = years;
-        this.expectedGain = expectedGain;
-    }
-
-    public CDBs(Long id, Long userId, BigDecimal invested, BigDecimal annualRate, int years, BigDecimal expectedGain) {
-        this.id = id;
-        this.userId = userId;
-        this.invested = invested;
+        this.amount = amount;
         this.annualRate = annualRate;
         this.years = years;
         this.expectedGain = expectedGain;
@@ -36,8 +27,8 @@ public class CDBs {
         return userId;
     }
 
-    public BigDecimal getInvested() {
-        return invested;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
     public BigDecimal getAnnualRate() {

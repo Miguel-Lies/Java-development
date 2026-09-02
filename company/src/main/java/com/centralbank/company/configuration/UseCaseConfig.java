@@ -17,7 +17,6 @@ import com.centralbank.company.application.ports.output.persistence.repository.D
 import com.centralbank.company.application.ports.output.persistence.repository.TransferKeysRepository;
 import com.centralbank.company.application.ports.output.persistence.repository.TransferRepository;
 import com.centralbank.company.application.ports.output.persistence.repository.UserRepository;
-import com.centralbank.company.domain.model.user.BankAccount;
 import com.centralbank.company.domain.service.InvestmentsService;
 
 @Configuration 
@@ -39,8 +38,8 @@ public class UseCaseConfig {
     }
 
     @Bean 
-    public TransferUseCase transferUseCase(TransferRepository transferRepository, UserRepository userRepository, BankAccountRepository bAccountRepository, BankAccount bankAccount){
-        return new TransferUseCase(transferRepository, userRepository, bAccountRepository, bankAccount);
+    public TransferUseCase transferUseCase(TransferRepository transferRepository, UserRepository userRepository, BankAccountRepository bAccountRepository){
+        return new TransferUseCase(transferRepository, userRepository, bAccountRepository);
     }
 
     @Bean 

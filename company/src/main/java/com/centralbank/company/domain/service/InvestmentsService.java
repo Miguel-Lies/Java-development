@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 import com.centralbank.company.shared.exceptions.InvalidAmountException;
 
-    public class InvestmentsService {
+public class InvestmentsService {
 
     public BigDecimal simulation(BigDecimal amount, BigDecimal annualRate, int years) {
         return amount

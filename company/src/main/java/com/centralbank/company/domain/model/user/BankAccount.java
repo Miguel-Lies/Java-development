@@ -3,6 +3,7 @@ package com.centralbank.company.domain.model.user;
 import java.math.BigDecimal;
 
 public class BankAccount {
+    private Long id;
     private Long userId;
     private BigDecimal balance;
 
@@ -25,6 +26,18 @@ public class BankAccount {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

@@ -8,6 +8,4 @@ public interface BankAccountRepository {
     BankAccount save(BankAccount bankAccount);
 
     Optional<BankAccount> findById(Long id);
-    Optional<BankAccount> findByUserId(Long id);
-
 }

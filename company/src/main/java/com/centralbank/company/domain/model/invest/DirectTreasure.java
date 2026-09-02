@@ -5,28 +5,32 @@ import java.math.BigDecimal;
 public class DirectTreasure {
     private Long id;
     private Long userId;
-    private BigDecimal invested;
+    private BigDecimal amount;
     private BigDecimal annualRate;
     private int years;
     private BigDecimal expectedGain;
     
-    public DirectTreasure(Long id, Long userId, BigDecimal invested, BigDecimal annualRate, int years,
+    public DirectTreasure(Long id, Long userId, BigDecimal amount, BigDecimal annualRate, int years,
             BigDecimal expectedGain) {
         this.id = id;
         this.userId = userId;
-        this.invested = invested;
+        this.amount = amount;
         this.annualRate = annualRate;
         this.years = years;
         this.expectedGain = expectedGain;
     }
 
-    public DirectTreasure(Long userId, BigDecimal invested, BigDecimal annualRate, int years, BigDecimal expectedGain) {
+    
+
+    public DirectTreasure(Long userId, BigDecimal amount, BigDecimal annualRate, int years, BigDecimal expectedGain) {
         this.userId = userId;
-        this.invested = invested;
+        this.amount = amount;
         this.annualRate = annualRate;
         this.years = years;
         this.expectedGain = expectedGain;
     }
+
+
 
     public Long getId() {
         return id;
@@ -44,12 +48,12 @@ public class DirectTreasure {
         this.userId = userId;
     }
 
-    public BigDecimal getInvested() {
-        return invested;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setInvested(BigDecimal invested) {
-        this.invested = invested;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public BigDecimal getAnnualRate() {

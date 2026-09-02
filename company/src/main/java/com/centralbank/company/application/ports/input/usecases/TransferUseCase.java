@@ -18,58 +18,41 @@ public class TransferUseCase {
     private final TransferRepository transferRepository;
     private final UserRepository userRepository;
     private final BankAccountRepository bankRepository;
-    private final BankAccount bankAccount;
 
     public TransferUseCase(TransferRepository transferRepository, UserRepository userRepository,
-            BankAccountRepository bankRepository, BankAccount bankAccount) {
+            BankAccountRepository bankRepository) {
         this.transferRepository = transferRepository;
         this.userRepository = userRepository;
         this.bankRepository = bankRepository;
-        this.bankAccount = bankAccount;
     }
 
-    public TransferEnum transferByEmail(String email, BigDecimal amount) {
+    public TransferEnum transferByEmail(Long senderId, String email, BigDecimal amount) {
         User receiver = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
-        return executeTransfer(receiver, amount);
+        return executeTransfer(senderId, receiver, amount);
     }
 
-    public TransferEnum transferByNumber(String phone, BigDecimal amount) {
-        User receiver = userRepository.findByPhone(phone)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
-        return executeTransfer(receiver, amount);
-    }
+    private TransferEnum executeTransfer(Long senderId, User receiver, BigDecimal amount) {
+        BankAccount senderAccount = bankRepository.findById(senderId)
+                .orElseThrow(() -> new NotFoundAccountException("Not found account for user"));
 
-    public TransferEnum transferByCpf(String cpf, BigDecimal amount) {
-        User receiver = userRepository.findByCpf(cpf)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
-        return executeTransfer(receiver, amount);
-    }
-
-    public TransferEnum transferByRandomKey(String randomKey, BigDecimal amount) {
-        User receiver = userRepository.findByRandomKey(randomKey)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
-        return executeTransfer(receiver, amount);
-    }
-
-    private TransferEnum executeTransfer(User receiver, BigDecimal amount) {
-        if (amount.compareTo(bankAccount.getBalance()) > 0) {
+        if (amount.compareTo(senderAccount.getBalance()) > 0) {
             throw new InsufficientBalanceException("Insufficient balance");
         }
 
-        BankAccount receiverAccount = bankRepository.findByUserId(receiver.getId())
+        BankAccount receiverAccount = bankRepository.findById(receiver.getId())
                 .orElseThrow(() -> new NotFoundAccountException("Not found account for user"));
 
-        bankAccount.setBalance(bankAccount.getBalance().subtract(amount));
+        senderAccount.setBalance(senderAccount.getBalance().subtract(amount));
         receiverAccount.setBalance(receiverAccount.getBalance().add(amount));
 
-        bankRepository.save(bankAccount);
+        bankRepository.save(senderAccount);
         bankRepository.save(receiverAccount);
 
         Transfers transfer = new Transfers(
                 null,
                 amount,
-                bankAccount.getUserId(),
+                senderAccount.getUserId(),
                 receiverAccount.getUserId(),
                 LocalDateTime.now());
         transferRepository.save(transfer);
